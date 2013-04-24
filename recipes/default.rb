@@ -37,7 +37,7 @@ if node[:solr][:installed] == false
     user "root"
     cwd "#{Chef::Config[:file_cache_path]}"
     code <<-EOH
-    wget http://www.apache.org/dist/lucene/solr/#{node[:solr][:version]}/apache-solr-#{node[:solr][:version]}.tgz
+    wget http://www.eu.apache.org/dist/lucene/solr/#{node[:solr][:version]}/apache-solr-#{node[:solr][:version]}.tgz
     tar -zxf apache-solr-#{node[:solr][:version]}.tgz
     cp -f apache-solr-#{node[:solr][:version]}/dist/apache-solr-#{node[:solr][:version]}.war #{node[:tomcat][:webapp_dir]}/solr.war
     cp -fr apache-solr-#{node[:solr][:version]}/example/solr #{node[:tomcat][:base]}/
@@ -86,7 +86,9 @@ if node[:solr][:installed] == false
     action :run
   end
   node.normal[:solr][:installed] = true
-  node.save
+  unless Chef::Config[:solo]
+    node.save
+  end
 end
 
 template "#{node[:tomcat][:context_dir]}/solr.xml" do

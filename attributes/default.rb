@@ -1,6 +1,6 @@
 #
-# Cookbook Name:: solr 
-# Attributes:: default 
+# Cookbook Name:: solr
+# Attributes:: default
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,11 +16,11 @@
 #
 
 node.default[:solr][:installed] = false
-default[:solr][:version] = "3.5.0"
+default[:solr][:version] = "3.6.2"
 default[:solr][:container] = "tomcat"
 default[:solr][:multicore] = false
 default[:solr][:core_names] = [""]
-default[:solr][:install_path] = "/home/admin/solr"
+default[:solr][:install_path] = "/opt/solr"
 default[:solr][:root_path] = "/data"
 default[:solr][:data_path] = "/data/solrdata"
 default[:solr][:velocity_enable] = "false"
